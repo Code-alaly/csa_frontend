@@ -4,9 +4,10 @@ import axios from "axios";
 //this one is for the version that bianca done made.
 const API_URL = "http://localhost:8080/user/";
 
-const register = (username, email, password) => {
+const register = (fname, lname, email, password) => {
     return axios.post(API_URL + 'register', {
-        username,
+        fname,
+        lname,
         email,
         password,
     });

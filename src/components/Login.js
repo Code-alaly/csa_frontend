@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -20,10 +20,20 @@ const Login = (props) => {
     const checkBtn = useRef();
 
     const [username, setUsername] = useState("");
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
+    const onChangeFname = (e) => {
+        const fname = e.target.value;
+        setFname(fname);
+    };
+    const onChangeLname = (e) => {
+        const lname = e.target.value;
+        setLname(lname);
+    };
     const onChangeUsername = (e) => {
         const username = e.target.value;
         setUsername(username);
@@ -86,6 +96,27 @@ const Login = (props) => {
                             validations={[required]}
                         />
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="username">First Name</label>
+                        <Input
+                            type="text"
+                            className="form-control"
+                            name="fname"
+                            value={fname}
+                            onChange={onChangeUsername}
+                            validations={[required]}
+                        />
+                    </div><div className="form-group">
+                        <label htmlFor="username">Last Name</label>
+                        <Input
+                            type="text"
+                            className="form-control"
+                            name="lname"
+                            value={lname}
+                            onChange={onChangeUsername}
+                            validations={[required]}
+                        />
+                    </div>
 
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
@@ -115,7 +146,7 @@ const Login = (props) => {
                             </div>
                         </div>
                     )}
-                    <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                    <CheckButton style={{display: "none"}} ref={checkBtn}/>
                 </Form>
             </div>
         </div>
