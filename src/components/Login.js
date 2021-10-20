@@ -4,6 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
+import {isEmail} from "validator";
 
 const required = (value) => {
     if (!value) {
@@ -15,28 +16,27 @@ const required = (value) => {
     }
 };
 
+const validEmail = (value) => {
+    if (!isEmail(value)) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                This is not a valid email.
+            </div>
+        );
+    }
+};
+
 const Login = (props) => {
     const form = useRef();
     const checkBtn = useRef();
-
-    const [username, setUsername] = useState("");
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-    const onChangeFname = (e) => {
-        const fname = e.target.value;
-        setFname(fname);
-    };
-    const onChangeLname = (e) => {
-        const lname = e.target.value;
-        setLname(lname);
-    };
-    const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
+    const onChangeEmail = (e) => {
+        const email = e.target.value;
+        setEmail(email);
     };
 
     const onChangePassword = (e) => {
@@ -51,9 +51,9 @@ const Login = (props) => {
         setLoading(true);
 
         form.current.validateAll();
-
+        //TODO: make sure that this login portion is doing the correct thing. right now, probs is not.
         if (checkBtn.current.context._errors.length === 0) {
-            AuthService.login(username, password).then(
+            AuthService.login(email, password).then(
                 () => {
                     props.history.push("/profile");
                     window.location.reload();
@@ -86,37 +86,17 @@ const Login = (props) => {
 
                 <Form onSubmit={handleLogin} ref={form}>
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="email">Email</label>
                         <Input
                             type="text"
                             className="form-control"
-                            name="username"
-                            value={username}
-                            onChange={onChangeUsername}
-                            validations={[required]}
+                            name="email"
+                            value={email}
+                            onChange={onChangeEmail}
+                            validations={[required, validEmail]}
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="username">First Name</label>
-                        <Input
-                            type="text"
-                            className="form-control"
-                            name="fname"
-                            value={fname}
-                            onChange={onChangeUsername}
-                            validations={[required]}
-                        />
-                    </div><div className="form-group">
-                        <label htmlFor="username">Last Name</label>
-                        <Input
-                            type="text"
-                            className="form-control"
-                            name="lname"
-                            value={lname}
-                            onChange={onChangeUsername}
-                            validations={[required]}
-                        />
-                    </div>
+
 
                     <div className="form-group">
                         <label htmlFor="password">Password</label>

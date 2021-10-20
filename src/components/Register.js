@@ -26,15 +26,6 @@ const validEmail = (value) => {
     }
 };
 
-const vusername = (value) => {
-    if (value.length < 3 || value.length > 20) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                The username must be between 3 and 20 characters.
-            </div>
-        );
-    }
-};
 
 const vpassword = (value) => {
     if (value.length < 6 || value.length > 40) {
@@ -50,18 +41,12 @@ const Register = (props) => {
     const form = useRef();
     const checkBtn = useRef();
 
-    const [username, setUsername] = useState("");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
-
-    const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
-    };
 
     const onChangeFname = (e) => {
         const fname = e.target.value;
@@ -124,17 +109,6 @@ const Register = (props) => {
                     {!successful && (
                         <div>
                             <div className="form-group">
-                                <label htmlFor="username">Username</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="username"
-                                    value={username}
-                                    onChange={onChangeUsername}
-                                    validations={[required, vusername]}
-                                />
-                            </div>
-                            <div className="form-group">
                                 <label htmlFor="fname">First Name</label>
                                 <Input
                                     type="text"
@@ -144,17 +118,18 @@ const Register = (props) => {
                                     onChange={onChangeFname}
                                     validations={[required]}
                                 />
-                            </div><div className="form-group">
-                            <label htmlFor="lname">Last Name</label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="lname"
-                                value={lname}
-                                onChange={onChangeLname}
-                                validations={[required]}
-                            />
-                        </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="lname">Last Name</label>
+                                <Input
+                                    type="text"
+                                    className="form-control"
+                                    name="lname"
+                                    value={lname}
+                                    onChange={onChangeLname}
+                                    validations={[required]}
+                                />
+                            </div>
 
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
