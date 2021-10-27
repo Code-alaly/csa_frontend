@@ -27,7 +27,7 @@ const validEmail = (value) => {
 };
 
 
-const vpassword = (value) => {
+const  vpassword = (value) => {
     if (value.length < 6 || value.length > 40) {
         return (
             <div className="alert alert-danger" role="alert">

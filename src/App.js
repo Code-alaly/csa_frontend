@@ -44,7 +44,7 @@ const App = () => {
                             Home
                         </Link>
                     </li>
-
+                    {/*it looks like this stuff will only show if there's the right access or whatever. */}
                     {showModeratorBoard && (
                         <li className="nav-item">
                             <Link to={"/mod"} className="nav-link">
