@@ -4,7 +4,7 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/user/";
 
 const register = (fname, lname, email, password) => {
-    return axios.post('http://localhost:8080/user/register', {
+    return axios.post(API_URL + 'register', {
         fname,
         lname,
         email,
@@ -12,13 +12,14 @@ const register = (fname, lname, email, password) => {
     });
 };
 
-const login = (username, password) => {
+const login = (email, password) => {
     return axios
-        .post(API_URL + "signin", {
-            username,
+        .post(API_URL + "login", {
+            email,
             password,
         })
         .then((response) => {
+            //need something called access token here.
             if (response.data.accessToken) {
                 localStorage.setItem("user", JSON.stringify(response.data));
             }
