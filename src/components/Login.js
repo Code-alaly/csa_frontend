@@ -63,7 +63,7 @@ const Login = (props) => {
                         (error.response &&
                             error.response.data &&
                             error.response.data.message) ||
-                        error.message ||
+                        error.message  ||
                         error.toString();
 
                     setLoading(false);
