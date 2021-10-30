@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
 
+//going to probably just... take this whole thing out? I'm not sure yet.
+
 const Home = () => {
     const [content, setContent] = useState("");
 

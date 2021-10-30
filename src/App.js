@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {Switch, Route, Link} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -10,12 +10,8 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
 
 const App = () => {
-    const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-    const [showAdminBoard, setShowAdminBoard] = useState(false);
     const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(() => {
@@ -23,8 +19,6 @@ const App = () => {
 
         if (user) {
             setCurrentUser(user);
-            // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-            // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
         }
     }, []);
 
@@ -44,23 +38,6 @@ const App = () => {
                             Home
                         </Link>
                     </li>
-                    {/*it looks like this stuff will only show if there's the right access or whatever. */}
-                    {showModeratorBoard && (
-                        <li className="nav-item">
-                            <Link to={"/mod"} className="nav-link">
-                                Moderator Board
-                            </Link>
-                        </li>
-                    )}
-
-                    {showAdminBoard && (
-                        <li className="nav-item">
-                            <Link to={"/admin"} className="nav-link">
-                                Admin Board
-                            </Link>
-                        </li>
-                    )}
-
                     {currentUser && (
                         <li className="nav-item">
                             <Link to={"/user"} className="nav-link">
@@ -102,13 +79,11 @@ const App = () => {
 
             <div className="container mt-3">
                 <Switch>
-                    <Route exact path={["/", "/home"]} component={Home} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/profile" component={Profile} />
-                    <Route path="/user" component={BoardUser} />
-                    <Route path="/mod" component={BoardModerator} />
-                    <Route path="/admin" component={BoardAdmin} />
+                    <Route exact path={["/", "/home"]} component={Home}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/register" component={Register}/>
+                    <Route exact path="/profile" component={Profile}/>
+                    <Route path="/user" component={BoardUser}/>
                 </Switch>
             </div>
         </div>

@@ -20,7 +20,7 @@ const login = (email, password) => {
         })
         .then((response) => {
             //need something called access token here.
-            if (response.data.accessToken) {
+            if (response.headers.all()[1].value) {
                 localStorage.setItem("user", JSON.stringify(response.data));
             }
 
