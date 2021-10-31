@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import Projects from "./components/Projects";
+import createProject from "./components/createProject"
 
 const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -35,16 +36,6 @@ const App = () => {
                 <Link to={"/"} className="navbar-brand">
                     K12 Citizen Science App
                 </Link>
-                <div className="navbar-nav mr-auto">
-                    {currentUser && (
-                        //this can just be the iformation on the user. So, after login, this can be the home page.
-                        <li className="nav-item">
-                            <Link to={"/projects"} className="nav-link">
-                                Projects
-                            </Link>
-                        </li>
-                    )}
-                </div>
 
                 {currentUser ? (
                     //this can be the user's projects
@@ -52,6 +43,16 @@ const App = () => {
                         <li className="nav-item">
                             <Link to={"/profile"} className="nav-link">
                                 {currentUser.fname} {currentUser.lname}
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/projects"} className="nav-link">
+                                Projects
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/createProject"} className="nav-link">
+                                Create Project
                             </Link>
                         </li>
                         <li className="nav-item">
