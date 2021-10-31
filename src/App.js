@@ -11,7 +11,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import Projects from "./components/Projects";
-import createProject from "./components/createProject"
+import CreateProject from "./components/createProject"
 
 const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -86,6 +86,7 @@ const App = () => {
                     <Route exact path="/profile" component={Profile}/>
                     <Route path="/user" component={BoardUser}/>
                     <Route path="/projects" component={Projects}/>
+                    <Route path="/createProject" component={CreateProject}/>
                 </Switch>
             </div>
         </div>

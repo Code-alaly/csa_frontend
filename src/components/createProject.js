@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import project from "../services/auth.project"
 
 const required = (value) => {
     if (!value) {
@@ -13,7 +14,7 @@ const required = (value) => {
     }
 };
 
-const Register = (props) => {
+const CreateProject = (props) => {
     const form = useRef();
     const checkBtn = useRef();
 
@@ -38,6 +39,26 @@ const Register = (props) => {
         setMessage("");
         setSuccessful(false);
         form.current.validateAll();
+
+        if (checkBtn.current.context._errors.length === 0) {
+            project.createProject(code, name, ).then(
+                (response) => {
+                    setMessage(response.data.message);
+                    setSuccessful(true);
+                },
+                (error) => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+
+                    setMessage(resMessage);
+                    setSuccessful(false);
+                }
+            );
+        }
 
 
     };
@@ -94,3 +115,5 @@ const Register = (props) => {
         </div>
     );
 }
+
+export default CreateProject
