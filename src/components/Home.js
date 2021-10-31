@@ -5,6 +5,7 @@ import UserService from "../services/user.service";
 //going to probably just... take this whole thing out? I'm not sure yet.
 
 const Home = () => {
+    //this will now just be static
     const [content, setContent] = useState("");
 
     useEffect(() => {
