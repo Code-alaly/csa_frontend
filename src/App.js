@@ -51,7 +51,7 @@ const App = () => {
                     <div className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <Link to={"/profile"} className="nav-link">
-                                {currentUser.fname} penut
+                                {currentUser.fname} {currentUser.lname}
                             </Link>
                         </li>
                         <li className="nav-item">

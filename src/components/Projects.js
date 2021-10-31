@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+
+
+const [loading, setLoading] = useState(false);
+const [message, setMessage] = useState("");
+
 const Projects = () => {
     //this will now just be static
 
