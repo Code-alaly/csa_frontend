@@ -13,11 +13,11 @@ const API_URL = 'http://localhost:8080/projects'
 
 // const API_URL = 'http://localhost:8080/api/test/'
 
-class userAuth {
-    getAuth() {
-        return axios.get(API_URL)
-    }
-}
+// class userAuth {
+//     getAuth() {
+//         return axios.get(API_URL)
+//     }
+// }
 
 class UserService {
     getPublicContent() {
