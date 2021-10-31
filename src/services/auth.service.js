@@ -21,6 +21,8 @@ const login = (email, password) => {
         .then((response) => {
             //need something called access token here.
             if (response.headers['auth-token']) {
+                //going ot add the access token to the data object that gets set to local storage.
+                response.data['accessToken'] = response.headers['auth-token']
                 localStorage.setItem("user", JSON.stringify(response.data));
             }
 

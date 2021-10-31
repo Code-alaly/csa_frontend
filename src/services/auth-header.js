@@ -1,4 +1,5 @@
 export default function authHeader() {
+    //this actually checks for the user.access token in local storage. Currently, the token is just in the header / not in the local storage item.
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (user && user.accessToken) {
