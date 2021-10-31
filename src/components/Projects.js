@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import AuthService from "../services/auth.service";
 import authHeader from "../services/auth-header";
-import getProjects from "../services/auth.project"
+import Project from "../services/auth.project"
 
 
 const Projects = () => {
@@ -10,7 +10,7 @@ const Projects = () => {
     const [content, setContent] = useState("");
 
     useEffect(() => {
-        getProjects.then(
+        Project.getProjects().then(
             (response) => {
                 setContent(response.data);
             },
