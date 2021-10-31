@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
+import Projects from "./components/Projects";
 
 const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -35,25 +36,22 @@ const App = () => {
                     K12 Citizen Science App
                 </Link>
                 <div className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link to={"/home"} className="nav-link">
-                            Home
-                        </Link>
-                    </li>
                     {currentUser && (
+                        //this can just be the iformation on the user. So, after login, this can be the home page.
                         <li className="nav-item">
-                            <Link to={"/user"} className="nav-link">
-                                User
+                            <Link to={"/projects"} className="nav-link">
+                                Projects
                             </Link>
                         </li>
                     )}
                 </div>
 
                 {currentUser ? (
+                    //this can be the user's projects
                     <div className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <Link to={"/profile"} className="nav-link">
-                                {currentUser.username}
+                                {currentUser.fname} penut
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -81,11 +79,12 @@ const App = () => {
 
             <div className="container mt-3">
                 <Switch>
-                    <Route exact path={["/", "/home"]} component={Home}/>
+                    <Route exact path={["/",]} component={Home}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/profile" component={Profile}/>
                     <Route path="/user" component={BoardUser}/>
+                    <Route path="/projects" component={Projects}/>
                 </Switch>
             </div>
         </div>
