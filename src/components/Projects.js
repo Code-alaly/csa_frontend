@@ -47,7 +47,9 @@ const Projects = () => {
                             }
                             key={index}
                         >
-                            {c._id} is this thing on?
+                            {c._id}
+                            {c.projectName}
+                            {c.projectCode}
                         </li>
                     ))}
                 </ul>
