@@ -18,7 +18,7 @@ const Projects = () => {
                 if (!Array.isArray(response.data)) {
                     setShow(response.data);
                 } else {
-                    setContent(response.data)
+                    setShow(response.data)
                 }
 
             },
@@ -37,21 +37,25 @@ const Projects = () => {
 
     return (
         <div>
-            {show ? (
             <div className="container">
-                <header className="jumbotron">
-                    <h3>{show}</h3>
-                </header>
+                <ul className="list-group">
+                    {show &&
+                    show.map((c, index) => (
+                        <li
+                            className={
+                                "list-group-item "
+                            }
+                            key={index}
+                        >
+                            {c._id} is this thing on?
+                        </li>
+                    ))}
+                </ul>
             </div>
-            ) : (
-            <div className="container">
-                <header className="jumbotron">
-                    {projectTile}
-                </header>
-            </div>
-            )}
 
-        </div>);
+        </div>
+    )
+
 };
 
 export default Projects;
