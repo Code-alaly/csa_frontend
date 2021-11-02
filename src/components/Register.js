@@ -90,7 +90,7 @@ const Register = (props) => {
                         error.message ||
                         error.toString();
 
-                    setMessage(resMessage);
+                    setMessage(resMessage + " " + error.response.data);
                     setSuccessful(false);
                 }
             );

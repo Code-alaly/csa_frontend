@@ -10,17 +10,11 @@ const Projects = () => {
     //this will now just be static
 
     const [content, setContent] = useState("");
-    const [show, setShow] = useState(undefined)
 
     useEffect(() => {
         Project.getProjects().then(
             (response) => {
-                if (!Array.isArray(response.data)) {
-                    setShow(response.data);
-                } else {
-                    setShow(response.data)
-                }
-
+                setContent(response.data)
             },
             (error) => {
                 const _content =
@@ -39,29 +33,24 @@ const Projects = () => {
         <div>
             <div className="container">
                 <ul className="list-group">
-                    {show &&
-                    show.map((c, index) => (
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Project Name: {c.projectName}</h5>
-                                <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
-                                <p className="card-text">Some quick example text to build on the card title and make up
-                                    the bulk of the card's content.</p>
-                                <a href="#" className="card-link">Card link</a>
-                                <a href="#" className="card-link">Another link</a>
+                    {Array.isArray(content)?
+                        content.map((c, index) => (
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">Project Name: {c.projectName}</h5>
+                                    <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
+                                    <p className="card-text">Some quick example text to build on the card title and make
+                                        up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" className="card-link">Card link</a>
+                                    <a href="#" className="card-link">Another link</a>
+                                </div>
                             </div>
-                        </div>
-                        // <li
-                        //     className={
-                        //         "list-group-item "
-                        //     }
-                        //     key={index}
-                        // >
-                        //     {c._id}
-                        //     {c.projectName}
-                        //     {c.projectCode}
-                        // </li>
-                    ))}
+                        )) : <div className="container">
+                            <header className="jumbotron">
+                                <h3>{content}</h3>
+                            </header>
+                        </div>}
                 </ul>
             </div>
 

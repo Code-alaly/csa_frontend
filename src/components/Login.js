@@ -67,7 +67,7 @@ const Login = (props) => {
                         error.toString();
 
                     setLoading(false);
-                    setMessage(resMessage);
+                    setMessage(resMessage + " " + error.response.data);
                 }
             );
         } else {

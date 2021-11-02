@@ -51,10 +51,10 @@ const CreateProject = (props) => {
                         (error.response &&
                             error.response.data &&
                             error.response.data.message) ||
-                        error.message ||
+                        error.message.data ||
                         error.toString();
 
-                    setMessage(resMessage);
+                    setMessage(resMessage + " " + error.response.data);
                     setSuccessful(false);
                 }
             );
