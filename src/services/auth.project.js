@@ -22,7 +22,15 @@ const createProject = (projectCode, projectName) => {
     })
 }
 
+const deleteProject = (id) => {
+    return axios.delete(API_URL + id, {headers: authHeader()}).then((response) => {
+        return response
+    })
+}
+
+
 export default {
     getProjects,
-    createProject
+    createProject,
+    deleteProject
 }

@@ -10,6 +10,14 @@ const Projects = () => {
     //this will now just be static
 
     const [content, setContent] = useState("");
+    const [del, doDel] = useState("")
+
+    const onDel = (e) => {
+        console.log(e)
+        console.log(e)
+        // doDel('hehe')
+
+    };
 
     useEffect(() => {
         Project.getProjects().then(
@@ -33,7 +41,7 @@ const Projects = () => {
         <div>
             <div className="container">
                 <ul className="list-group">
-                    {Array.isArray(content)?
+                    {Array.isArray(content) ?
                         content.map((c, index) => (
                             <div className="card">
                                 <div className="card-body">
@@ -41,7 +49,7 @@ const Projects = () => {
                                     <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
                                     <p className="card-text">'project subject'</p>
                                     <a href="#" className="card-link">Card link</a>
-                                    <a href="#" className="card-link">Another link</a>
+                                    <button className="card-link" onClick={onDel(c._id)}>{c._id}</button>
                                 </div>
                             </div>
                         )) : <div className="container">
