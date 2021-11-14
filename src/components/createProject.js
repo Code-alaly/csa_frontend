@@ -43,7 +43,7 @@ const CreateProject = (props) => {
         if (checkBtn.current.context._errors.length === 0) {
             project.createProject(code, name, ).then(
                 (response) => {
-                    setMessage(response.data.message);
+                    setMessage('Project has been successfully created');
                     setSuccessful(true);
                 },
                 (error) => {
