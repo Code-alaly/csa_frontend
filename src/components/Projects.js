@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import AuthService from "../services/auth.service";
 import authHeader from "../services/auth-header";
 import Project from "../services/auth.project"
-import projectTile from "../components/ProjectTile";
+import projectTile from "./ProjectTile";
 import data from "bootstrap/js/src/dom/data";
 
 
@@ -39,9 +39,7 @@ const Projects = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Project Name: {c.projectName}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
-                                    <p className="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
+                                    <p className="card-text">'project subject'</p>
                                     <a href="#" className="card-link">Card link</a>
                                     <a href="#" className="card-link">Another link</a>
                                 </div>
