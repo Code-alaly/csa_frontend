@@ -79,7 +79,7 @@ const Register = (props) => {
             AuthService.register(fname, lname, email, password).
             then(
                 (response) => {
-                    setMessage(response.data.message);
+                    setMessage('Account has been successfully created');
                     setSuccessful(true);
                 },
                 (error) => {
