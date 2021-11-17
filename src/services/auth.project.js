@@ -15,7 +15,6 @@ const getProjects = (id) => {
 
 const createProject = (projectCode, projectName) => {
     return axios.post(API_URL, {
-        projectCode,
         projectName
     }, {headers: authHeader()}).then((response) => {
         return response
@@ -26,6 +25,10 @@ const deleteProject = (id) => {
     return axios.delete(API_URL + id, {headers: authHeader()}).then((response) => {
         return response
     })
+}
+
+const viewProject = (id) => {
+
 }
 
 

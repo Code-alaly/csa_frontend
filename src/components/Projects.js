@@ -33,7 +33,6 @@ const Projects = () => {
 
     const onDel = (e) => {
         const name = e.target.getAttribute("id")
-        console.log(name)
         Project.deleteProject(name).then((response) => {
             window.location.reload()
         })
@@ -53,7 +52,8 @@ const Projects = () => {
                                     <p className="card-text">'project subject'</p>
                                     <a href="#" className="card-link">Card link</a>
                                     <button className="card-link" id={c._id}
-                                            onClick={onDel}>{c._id}</button>
+                                            onClick={onDel}>Delete
+                                    </button>
                                 </div>
                             </div>
                         )) : <div className="container">

@@ -34,11 +34,6 @@ const CreateProject = (props) => {
         const desc = e.target.value;
         setDesc(desc);
     };
-
-    const onChangeCode = (e) => {
-        const code = e.target.value;
-        setCode(code);
-    };
     const onChangeSubj = (e) => {
         const subj = e.target.value;
         setSubj(subj);
@@ -88,17 +83,6 @@ const CreateProject = (props) => {
                                     name="name"
                                     value={name}
                                     onChange={onChangeName}
-                                    validations={[required]}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="lname">Project Code</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="code"
-                                    value={code}
-                                    onChange={onChangeCode}
                                     validations={[required]}
                                 />
                             </div>
