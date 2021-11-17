@@ -10,14 +10,7 @@ const Projects = () => {
     //this will now just be static
 
     const [content, setContent] = useState("");
-    const [del, doDel] = useState("")
 
-    const onDel = (e) => {
-        console.log(e)
-        console.log(e)
-        // doDel('hehe')
-
-    };
 
     useEffect(() => {
         Project.getProjects().then(
@@ -37,6 +30,16 @@ const Projects = () => {
         );
     }, []);
 
+
+    const onDel = (e) => {
+        const name = e.target.getAttribute("id")
+        console.log(name)
+        Project.deleteProject(name).then((response) => {
+            window.location.reload()
+        })
+    };
+
+
     return (
         <div>
             <div className="container">
@@ -49,7 +52,8 @@ const Projects = () => {
                                     <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
                                     <p className="card-text">'project subject'</p>
                                     <a href="#" className="card-link">Card link</a>
-                                    <button className="card-link" onClick={onDel(c._id)}>{c._id}</button>
+                                    <button className="card-link" id={c._id}
+                                            onClick={onDel}>{c._id}</button>
                                 </div>
                             </div>
                         )) : <div className="container">
