@@ -10,6 +10,8 @@ const ViewProject = (props) => {
     useEffect(() => {
         Entries.getEntries(projectData.projectCode).then(
             (response) => {
+
+                console.log("STAPHTCH")
                 //TODO: this is succesfully working, we'll just want it to be actually populating correctly with student entries and what have you
                 setContent(response.data.teacherExample)
             },
@@ -32,22 +34,26 @@ const ViewProject = (props) => {
         <div className="container">
             <header className="jumbotron">
                 <h3>
-                    <strong>Project Name: {projectData.projectName}</strong> Profile
+                    <strong>Project Name: {projectData.projectName}</strong>
                 </h3>
             </header>
             <p>
-                <strong>Id:</strong> Project Code: {projectData.projectCode}
+                <strong>Project Code:</strong> {projectData.projectCode}
             </p>
             <p>
-                <strong>Email:</strong> this is just some stuff
-            </p>
+                <strong>Project Description</strong> Fill in till this is on
+            </p><p>
+            <strong>Project Subject</strong> Fill in till this is on
+        </p>
             <div className="container">
                 <ul className="list-group">{Array.isArray(content) ?
                     content.map((c, index) => (
                         <div className="card">
-                            <div className="card-body" id={c._id}>
-                                <h5 className="card-title">Project Name: {c.projectName}</h5>
-                                <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
+                            <div className="card-body">
+                                <h5 className="card-title">Student Name: {c.studentName}</h5>
+                                <h5 className="card-title"> The description: {c.description}</h5>
+                                <h6 className="card-subtitle mb-2 text-muted">Another attribute from
+                                    student: {c.picture}</h6>
                                 <button className="card-link" id={c._id}
                                 >Delete
                                 </button>
