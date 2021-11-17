@@ -39,7 +39,6 @@ const Projects = props => {
         const name = e.target.getAttribute("id")
         Project.getProject(name).then((res) => {
             const items = res
-            console.log(items)
             props.history.push({pathname: '/ViewProject', state: res.data});
             window.location.reload();
         })
