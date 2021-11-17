@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from "react";
-import AuthService from "../services/auth.service";
-import authHeader from "../services/auth-header";
-import Project from "../services/auth.project"
-import projectTile from "./ProjectTile";
+import authHeader from "../../services/auth-header";
+import Project from "../../services/auth.project"
 import data from "bootstrap/js/src/dom/data";
 
 
-const Projects = () => {
+const Projects = props => {
     //this will now just be static
 
     const [content, setContent] = useState("");
@@ -37,7 +35,15 @@ const Projects = () => {
             window.location.reload()
         })
     };
-
+    const onGet = (e) => {
+        const name = e.target.getAttribute("id")
+        Project.getProject(name).then((res) => {
+            const items = res
+            console.log(items)
+            props.history.push('/ViewProject');
+            window.location.reload();
+        })
+    }
 
     return (
         <div>
@@ -46,7 +52,7 @@ const Projects = () => {
                     {Array.isArray(content) ?
                         content.map((c, index) => (
                             <div className="card">
-                                <div className="card-body">
+                                <div className="card-body" id={c._id} onClick={onGet}>
                                     <h5 className="card-title">Project Name: {c.projectName}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
                                     <p className="card-text">'project subject'</p>

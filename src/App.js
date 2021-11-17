@@ -11,8 +11,9 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
-import Projects from "./components/Projects";
-import CreateProject from "./components/createProject"
+import Projects from "./components/project/Projects";
+import CreateProject from "./components/project/createProject"
+import ViewProject from "./components/project/viewProject";
 
 const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -88,6 +89,7 @@ const App = () => {
                     <Route path="/user" component={BoardUser}/>
                     <Route path="/projects" component={Projects}/>
                     <Route path="/createProject" component={CreateProject}/>
+                    <Route path={"/viewProject"} component={ViewProject}></Route>
                 </Switch>
             </div>
         </div>

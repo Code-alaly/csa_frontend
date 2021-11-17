@@ -4,14 +4,21 @@ import authHeader from "./auth-header";
 const API_URL = "http://localhost:8080/projects/";
 
 
-const getProjects = (id) => {
+const getProjects = () => {
     return axios.get(API_URL, {
-        headers: authHeader(),
-        id
+        headers: authHeader()
     }).then((response) => {
         return response
     })
 };
+
+const getProject = (id) => {
+    return axios.get(API_URL + '/' + id, {
+        headers: authHeader()
+    }).then((response) => {
+        return response
+    })
+}
 
 const createProject = (projectCode, projectName) => {
     return axios.post(API_URL, {
@@ -27,13 +34,10 @@ const deleteProject = (id) => {
     })
 }
 
-const viewProject = (id) => {
-
-}
-
 
 export default {
     getProjects,
     createProject,
-    deleteProject
+    deleteProject,
+    getProject
 }
