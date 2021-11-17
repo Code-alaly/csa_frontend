@@ -1,7 +1,7 @@
 import React from "react";
 
-const ViewProject = (e) => {
-    console.log(e)
+const ViewProject = (props) => {
+    const e = props.location.state
 
     return (
         <div className="container">
@@ -11,7 +11,7 @@ const ViewProject = (e) => {
                 </h3>
             </header>
             <p>
-                <strong>Id:</strong> Project Code: e.projectCode
+                <strong>Id:</strong> Project Code: {e.projectCode}
             </p>
             <p>
                 <strong>Email:</strong> this is just some stuff

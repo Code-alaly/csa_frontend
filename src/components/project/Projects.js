@@ -40,7 +40,7 @@ const Projects = props => {
         Project.getProject(name).then((res) => {
             const items = res
             console.log(items)
-            props.history.push('/ViewProject');
+            props.history.push({pathname: '/ViewProject', state: res.data});
             window.location.reload();
         })
     }
