@@ -27,7 +27,7 @@ const validEmail = (value) => {
 };
 
 
-const vpassword = (value) => {
+const  vpassword = (value) => {
     if (value.length < 6 || value.length > 40) {
         return (
             <div className="alert alert-danger" role="alert">
@@ -76,9 +76,10 @@ const Register = (props) => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            AuthService.register(fname, lname, email, password).then(
+            AuthService.register(fname, lname, email, password).
+            then(
                 (response) => {
-                    setMessage(response.data.message);
+                    setMessage('Account has been successfully created');
                     setSuccessful(true);
                 },
                 (error) => {
@@ -89,7 +90,7 @@ const Register = (props) => {
                         error.message ||
                         error.toString();
 
-                    setMessage(resMessage);
+                    setMessage(resMessage + " " + error.response.data);
                     setSuccessful(false);
                 }
             );

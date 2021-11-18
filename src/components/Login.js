@@ -63,11 +63,12 @@ const Login = (props) => {
                         (error.response &&
                             error.response.data &&
                             error.response.data.message) ||
-                        error.message ||
+                        error.message  ||
                         error.toString();
 
                     setLoading(false);
-                    setMessage(resMessage);
+                    // need to set it uniform with sending out errors. this one has ['error'] needed for it...
+                    setMessage(resMessage + " " + error.response.data['Error']);
                 }
             );
         } else {
