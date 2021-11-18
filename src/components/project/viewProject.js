@@ -3,6 +3,7 @@ import Project from "../../services/auth.project";
 import Entries from "../../services/auth.students";
 
 const ViewProject = (props) => {
+    //this is how the items, like project code, are passed into this new component.
     const projectData = props.location.state
 
     const [content, setContent] = useState("");
@@ -11,7 +12,6 @@ const ViewProject = (props) => {
         Entries.getEntries(projectData.projectCode).then(
             (response) => {
 
-                console.log("STAPHTCH")
                 //TODO: this is succesfully working, we'll just want it to be actually populating correctly with student entries and what have you
                 setContent(response.data.teacherExample)
             },
