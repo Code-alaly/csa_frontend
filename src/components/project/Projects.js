@@ -5,7 +5,7 @@ import data from "bootstrap/js/src/dom/data";
 
 
 const Projects = props => {
-    //this will now just be static
+    //added props to creation of component
 
     const [content, setContent] = useState("");
 
