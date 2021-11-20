@@ -54,7 +54,7 @@ const Projects = props => {
                                 <div className="card-body" id={c._id} onClick={onGet}>
                                     <h5 className="card-title">Project Name: {c.projectName}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
-                                    <p className="card-text">'project subject'</p>
+                                    <p className="card-text">Subject: {c.subject}</p>
                                     <a href="#" className="card-link">Card link</a>
                                     <button className="card-link" id={c._id}
                                             onClick={onDel}>Delete

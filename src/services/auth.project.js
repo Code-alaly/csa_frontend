@@ -19,9 +19,9 @@ const getProject = (id) => {
     })
 }
 
-const createProject = (projectCode, projectName) => {
+const createProject = (projectName, description, subject) => {
     return axios.post(API_URL, {
-        projectName
+        projectName, description, subject
     }, {headers: authHeader()}).then((response) => {
         return response
     })

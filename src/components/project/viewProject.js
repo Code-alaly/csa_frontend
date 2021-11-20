@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Project from "../../services/auth.project";
 import Entries from "../../services/auth.students";
+import {Bar} from 'react-chartjs-2';
 
 const ViewProject = (props) => {
     //this is how the items, like project code, are passed into this new component.
@@ -41,9 +42,9 @@ const ViewProject = (props) => {
                 <strong>Project Code:</strong> {projectData.projectCode}
             </p>
             <p>
-                <strong>Project Description</strong> Fill in till this is on
+                <strong>Project Description</strong> {projectData.description}
             </p><p>
-            <strong>Project Subject</strong> Fill in till this is on
+            <strong>Project Subject</strong> {projectData.subject}
         </p>
             <div className="container">
                 <ul className="list-group">{Array.isArray(content) ?
@@ -51,9 +52,9 @@ const ViewProject = (props) => {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Student Name: {c.studentName}</h5>
-                                <h5 className="card-title"> The description: {c.description}</h5>
+                                <h5 className="card-title"> The description: {c.amount}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Another attribute from
-                                    student: {c.picture}</h6>
+                                    student: {c.location}</h6>
                                 <button className="card-link" id={c._id}
                                 >Delete
                                 </button>

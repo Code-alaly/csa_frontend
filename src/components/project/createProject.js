@@ -21,7 +21,6 @@ const CreateProject = (props) => {
 
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
-    const [code, setCode] = useState("");
     const [subj, setSubj] = useState("");
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
@@ -47,7 +46,7 @@ const CreateProject = (props) => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            project.createProject(code, name,).then(
+            project.createProject(name, desc, subj).then(
                 (response) => {
                     setMessage('Project has been successfully created');
                     setSuccessful(true);
