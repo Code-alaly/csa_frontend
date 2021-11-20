@@ -14,6 +14,7 @@ const ViewProject = (props) => {
             (response) => {
 
                 //TODO: this is succesfully working, we'll just want it to be actually populating correctly with student entries and what have you
+                console.log("doo doo doo lookin out maaaah back door")
                 setContent(response.data.teacherExample)
             },
             (error) => {
@@ -28,6 +29,14 @@ const ViewProject = (props) => {
             }
         );
     }, []);
+
+    const onDel = (e) => {
+
+        const name = e.target.getAttribute("name")
+        Entries.delEntry(projectData.projectCode, name).then((response) => {
+            window.location.reload()
+        })
+    };
 
     return (
         //TODO: I think in here I'll put all of the entries, along with the graph and what not.
@@ -55,7 +64,7 @@ const ViewProject = (props) => {
                                 <h5 className="card-title"> The description: {c.amount}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Another attribute from
                                     student: {c.location}</h6>
-                                <button className="card-link" id={c._id}
+                                <button className="card-link" name={c.studentName} onClick={onDel}
                                 >Delete
                                 </button>
                             </div>
