@@ -37,12 +37,14 @@ const Projects = props => {
     };
     const onGet = (e) => {
         const name = e.target.getAttribute("id")
+        const path = e.target.getAttribute("path")
         Project.getProject(name).then((res) => {
             const items = res
-            props.history.push({pathname: '/ViewProject', state: res.data});
+            props.history.push({pathname: path, state: res.data});
             window.location.reload();
         })
     }
+
 
     return (
         <div>
@@ -51,11 +53,13 @@ const Projects = props => {
                     {Array.isArray(content) ?
                         content.map((c, index) => (
                             <div className="card">
-                                <div className="card-body" id={c._id} onClick={onGet}>
+                                <div className="card-body" id={c._id} onClick={onGet} path={'/ViewProject'}>
                                     <h5 className="card-title">Project Name: {c.projectName}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Project Code: {c.projectCode}</h6>
                                     <p className="card-text">Subject: {c.subject}</p>
-                                    <a href="#" className="card-link">Card link</a>
+                                    <button className="card-link" id={c._id} path={'/EditProject'}
+                                            onClick={onGet}>Edit
+                                    </button>
                                     <button className="card-link" id={c._id}
                                             onClick={onDel}>Delete
                                     </button>

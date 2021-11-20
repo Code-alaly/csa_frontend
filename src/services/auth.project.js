@@ -33,6 +33,14 @@ const deleteProject = (id) => {
     })
 }
 
+const editProject = (projectName, description, subject) => {
+    return axios.patch(API_URL, {
+        projectName, description, subject
+    }, {headers: authHeader()}).then((response) => {
+        return response
+    })
+}
+
 
 export default {
     getProjects,

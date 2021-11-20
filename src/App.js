@@ -14,6 +14,7 @@ import BoardUser from "./components/BoardUser";
 import Projects from "./components/project/Projects";
 import CreateProject from "./components/project/createProject"
 import ViewProject from "./components/project/viewProject";
+import EditProject from "./components/project/editProject";
 
 const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -89,7 +90,8 @@ const App = () => {
                     <Route path="/user" component={BoardUser}/>
                     <Route path="/projects" component={Projects}/>
                     <Route path="/createProject" component={CreateProject}/>
-                    <Route path={"/viewProject"} component={ViewProject}></Route>
+                    <Route path={"/viewProject"} component={ViewProject}/>
+                    <Route path={"/editProject"} component={EditProject}/>
                 </Switch>
             </div>
         </div>
