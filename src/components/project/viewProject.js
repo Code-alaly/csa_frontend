@@ -107,9 +107,26 @@ const ViewProject = (props) => {
                         </header>
                     </div>}
                 </ul>
-                <div>
-
-                </div>
+                <div>{content.hasOwnProperty('data') ?
+                    <Bar
+                        data={content['data']}
+                        options={{
+                            title: {
+                                display: true,
+                                text: 'Average Rainfall per month',
+                                fontSize: 20
+                            },
+                            legend: {
+                                display: true,
+                                position: 'right'
+                            }
+                        }}
+                    /> : <div className="container">
+                        <header className="jumbotron">
+                            <h3>{content}</h3>
+                        </header>
+                    </div>
+                }</div>
             </div>
         </div>
     );
