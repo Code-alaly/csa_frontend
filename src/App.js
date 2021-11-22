@@ -20,8 +20,6 @@ const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(() => {
-        // so this part is where we do the authorization.
-        //TODO: look at the flow chart showing the steps of authorization again. I don't actually understand at the moment.
         const user = AuthService.getCurrentUser();
 
         if (user) {

@@ -31,7 +31,7 @@ const Projects = props => {
 
     const onDel = (e) => {
         const name = e.target.getAttribute("id")
-        Project.deleteProject(name).then((response) => {
+        Project.deleteProject(name).then(() => {
             window.location.reload()
         })
     };
@@ -39,7 +39,6 @@ const Projects = props => {
         const name = e.target.getAttribute("id")
         const path = e.target.getAttribute("path")
         Project.getProject(name).then((res) => {
-            const items = res
             props.history.push({pathname: path, state: res.data});
             window.location.reload();
         })
