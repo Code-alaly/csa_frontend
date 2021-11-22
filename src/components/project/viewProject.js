@@ -9,18 +9,10 @@ const ViewProject = (props) => {
     const projectData = props.location.state
 
     const [content, setContent] = useState("");
-    const [graph, setGraph] = useState("");
 
     useEffect(() => {
         Entries.getEntries(projectData.projectCode).then(
             (response) => {
-
-                // function groupArrayOfObjects(list, key) {
-                //     return list.reduce(function (rv, x) {
-                //         (rv[x[key]] = rv[x[key]] || []).push(x['amount']);
-                //         return rv;
-                //     }, {});
-                // };
 
 
                 const sm = response.data.studentSubmission;
@@ -34,12 +26,11 @@ const ViewProject = (props) => {
                         holder[d.time] = d.amount;
                     }
                 });
-                // let data = groupArrayOfObjects(sm, 'time')
 
                 console.log("doo doo doo lookin out maaaah back door")
 
                 const timeData = {
-                    labels: [new Set(sm.map(item => item.time))],
+                    labels: Object.keys(holder),
 
                     datasets: [
                         {
@@ -47,12 +38,16 @@ const ViewProject = (props) => {
                             backgroundColor: 'rgba(75,192,192,1)',
                             borderColor: 'rgba(0,0,0,1)',
                             borderWidth: 2,
-                            data: [new Set(sm.map(item => item.time))]
+                            data: Object.values(holder)
                         }
                     ]
                 }
-                sm.push(timeData)
-                setContent(sm)
+                //once all the graph data has been generated, split entries and graph into 2 props
+                //that both live in the state object.
+                let stateObject = []
+                stateObject['entries'] = sm
+                stateObject['data'] = timeData
+                setContent(stateObject)
             },
             (error) => {
                 const _content =
@@ -93,8 +88,8 @@ const ViewProject = (props) => {
             <strong>Project Subject</strong> {projectData.subject}
         </p>
             <div className="container">
-                <ul className="list-group">{Array.isArray(content) ?
-                    content.map((c, index) => (
+                <ul className="list-group">{Array.isArray(content['entries']) ?
+                    content['entries'].map((c, index) => (
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Student Name: {c.studentName}</h5>
