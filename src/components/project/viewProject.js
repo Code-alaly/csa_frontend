@@ -15,7 +15,7 @@ const ViewProject = (props) => {
 
                 //TODO: this is succesfully working, we'll just want it to be actually populating correctly with student entries and what have you
                 console.log("doo doo doo lookin out maaaah back door")
-                setContent(response.data.teacherExample)
+                setContent(response.data.studentSubmission)
             },
             (error) => {
                 const _content =

@@ -113,7 +113,7 @@ const EditProject = (props) => {
 
 
                             <div className="form-group">
-                                <button className="btn btn-primary btn-block">Create Project</button>
+                                <button className="btn btn-primary btn-block">Edit Project</button>
                             </div>
                         </div>
                     )}
