@@ -3,19 +3,56 @@ import Project from "../../services/auth.project";
 import Entries from "../../services/auth.students";
 import {Bar} from 'react-chartjs-2';
 
+
 const ViewProject = (props) => {
     //this is how the items, like project code, are passed into this new component.
     const projectData = props.location.state
 
     const [content, setContent] = useState("");
+    const [graph, setGraph] = useState("");
 
     useEffect(() => {
         Entries.getEntries(projectData.projectCode).then(
             (response) => {
 
-                //TODO: this is succesfully working, we'll just want it to be actually populating correctly with student entries and what have you
+                // function groupArrayOfObjects(list, key) {
+                //     return list.reduce(function (rv, x) {
+                //         (rv[x[key]] = rv[x[key]] || []).push(x['amount']);
+                //         return rv;
+                //     }, {});
+                // };
+
+
+                const sm = response.data.studentSubmission;
+                //this takes the data and calculates how many total sightings were made for morning, afternoon and evening.
+                let data = sm
+                let holder = {}
+                data.forEach(function (d) {
+                    if (holder.hasOwnProperty(d.time)) {
+                        holder[d.time] = holder[d.time] + d.amount;
+                    } else {
+                        holder[d.time] = d.amount;
+                    }
+                });
+                // let data = groupArrayOfObjects(sm, 'time')
+
                 console.log("doo doo doo lookin out maaaah back door")
-                setContent(response.data.studentSubmission)
+
+                const timeData = {
+                    labels: [new Set(sm.map(item => item.time))],
+
+                    datasets: [
+                        {
+                            label: 'Rainfall',
+                            backgroundColor: 'rgba(75,192,192,1)',
+                            borderColor: 'rgba(0,0,0,1)',
+                            borderWidth: 2,
+                            data: [new Set(sm.map(item => item.time))]
+                        }
+                    ]
+                }
+                sm.push(timeData)
+                setContent(sm)
             },
             (error) => {
                 const _content =
@@ -75,6 +112,9 @@ const ViewProject = (props) => {
                         </header>
                     </div>}
                 </ul>
+                <div>
+
+                </div>
             </div>
         </div>
     );
