@@ -15,9 +15,8 @@ const ViewProject = (props) => {
             (response) => {
 
 
-                const sm = response.data.studentSubmission;
+                const data = response.data.studentSubmission;
                 //this takes the data and calculates how many total sightings were made for morning, afternoon and evening.
-                let data = sm
                 let holder = {}
                 data.forEach(function (d) {
                     if (holder.hasOwnProperty(d.time)) {
@@ -34,7 +33,7 @@ const ViewProject = (props) => {
 
                     datasets: [
                         {
-                            label: 'Rainfall',
+                            label: projectData.subject,
                             backgroundColor: 'rgba(75,192,192,1)',
                             borderColor: 'rgba(0,0,0,1)',
                             borderWidth: 2,
@@ -45,7 +44,7 @@ const ViewProject = (props) => {
                 //once all the graph data has been generated, split entries and graph into 2 props
                 //that both live in the state object.
                 let stateObject = []
-                stateObject['entries'] = sm
+                stateObject['entries'] = data
                 stateObject['data'] = timeData
                 setContent(stateObject)
             },
@@ -93,9 +92,8 @@ const ViewProject = (props) => {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Student Name: {c.studentName}</h5>
-                                <h5 className="card-title"> The description: {c.amount}</h5>
-                                <h6 className="card-subtitle mb-2 text-muted">Another attribute from
-                                    student: {c.location}</h6>
+                                <h5 className="card-title"> Amount Seen {c.amount}</h5>
+                                <h6 className="card-subtitle mb-2 text-muted">Time of day: {c.time}</h6>
                                 <button className="card-link" name={c.studentName} onClick={onDel}
                                 >Delete
                                 </button>
@@ -113,7 +111,7 @@ const ViewProject = (props) => {
                         options={{
                             title: {
                                 display: true,
-                                text: 'Average Rainfall per month',
+                                text: projectData.subject,
                                 fontSize: 20
                             },
                             legend: {
