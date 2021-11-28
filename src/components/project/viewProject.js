@@ -26,7 +26,6 @@ const ViewProject = (props) => {
                     }
                 });
 
-                console.log("doo doo doo lookin out maaaah back door")
 
                 const timeData = {
                     labels: Object.keys(holder),
@@ -41,8 +40,6 @@ const ViewProject = (props) => {
                         }
                     ]
                 }
-                //once all the graph data has been generated, split entries and graph into 2 props
-                //that both live in the state object.
                 let stateObject = []
                 stateObject['entries'] = data
                 stateObject['data'] = timeData
@@ -91,10 +88,10 @@ const ViewProject = (props) => {
                     content['entries'].map((c, index) => (
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">Student Name: {c.studentName}</h5>
+                                <h5 className="card-title">Student Name: {c.studentUsername}</h5>
                                 <h5 className="card-title"> Amount Seen {c.amount}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Time of day: {c.time}</h6>
-                                <button className="card-link" name={c.studentName} onClick={onDel}
+                                <button className="card-link" name={c.studentUsername} onClick={onDel}
                                 >Delete
                                 </button>
                             </div>
