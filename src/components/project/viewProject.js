@@ -85,19 +85,21 @@ const ViewProject = (props) => {
         </p>
             <div className="container">
                 <row>
-                    <column>
+                    <row>
                         <ul className="list-group">{Array.isArray(content['entries']) ?
                             content['entries'].map((c, index) => (
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">Student Name: {c.studentUsername}</h5>
-                                        <h5 className="card-title"> Amount Seen {c.amount}</h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">Time of day: {c.time}</h6>
-                                        <button className="card-link" name={c.studentUsername} onClick={onDel}
-                                        >Delete
-                                        </button>
+                                <column>
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <h5 className="card-title">Student Name: {c.studentUsername}</h5>
+                                            <h5 className="card-title"> Amount Seen {c.amount}</h5>
+                                            <h6 className="card-subtitle mb-2 text-muted">Time of day: {c.time}</h6>
+                                            <button className="card-link" name={c.studentUsername} onClick={onDel}
+                                            >Delete
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                </column>
                             )) : <div className="container">
                                 <header className="jumbotron">
                                     <h3>{content}</h3>
@@ -105,33 +107,37 @@ const ViewProject = (props) => {
                             </div>}
 
                         </ul>
-                    </column>
-                    <column>
-                        <div>{content.hasOwnProperty('data') ?
-                            <Bar
-                                data={content['data']}
-                                options={{
-                                    title: {
-                                        display: true,
-                                        text: projectData.subject,
-                                        fontSize: 20
-                                    },
-                                    legend: {
-                                        display: true,
-                                        position: 'right'
-                                    }
-                                }}
-                            /> : <div className="container">
-                                <header className="jumbotron">
-                                    <h3>{content}</h3>
-                                </header>
-                            </div>
-                        }</div>
-                    </column>
+
                 </row>
-            </div>
+                <column>
+                    <div>{content.hasOwnProperty('data') ?
+                        <Bar
+                            data={content['data']}
+                            options={{
+                                title: {
+                                    display: true,
+                                    text: projectData.subject,
+                                    fontSize: 20
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'right'
+                                }
+                            }}
+                        /> : <div className="container">
+                            <header className="jumbotron">
+                                <h3>{content}</h3>
+                            </header>
+                        </div>
+                    }</div>
+                </column>
+
+
+            </row>
         </div>
-    );
+</div>
+)
+    ;
 };
 
 export default ViewProject;
