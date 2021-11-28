@@ -19,9 +19,9 @@ const getProject = (id) => {
     })
 }
 
-const createProject = (projectCode, projectName) => {
+const createProject = (projectName, description, subject) => {
     return axios.post(API_URL, {
-        projectName
+        projectName, description, subject
     }, {headers: authHeader()}).then((response) => {
         return response
     })
@@ -33,10 +33,19 @@ const deleteProject = (id) => {
     })
 }
 
+const editProject = (projectName, description, subject, id) => {
+    return axios.patch(API_URL + id, {
+        projectName, description, subject
+    }, {headers: authHeader()}).then((response) => {
+        return response
+    })
+}
+
 
 export default {
     getProjects,
     createProject,
     deleteProject,
-    getProject
+    getProject,
+    editProject
 }

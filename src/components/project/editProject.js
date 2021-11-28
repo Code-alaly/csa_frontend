@@ -15,13 +15,15 @@ const required = (value) => {
     }
 };
 
-const CreateProject = (props) => {
+const EditProject = (props) => {
     const form = useRef();
     const checkBtn = useRef();
 
-    const [name, setName] = useState("");
-    const [desc, setDesc] = useState("");
-    const [subj, setSubj] = useState("");
+    const projectData = props.location.state
+
+    const [name, setName] = useState(projectData.projectName);
+    const [desc, setDesc] = useState(projectData.description);
+    const [subj, setSubj] = useState(projectData.subject);
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -46,10 +48,11 @@ const CreateProject = (props) => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            project.createProject(name, desc, subj).then(
+            project.editProject(name, desc, subj, projectData._id).then(
                 (response) => {
-                    setMessage('Project has been successfully created');
+                    setMessage('Project has been successfully edited');
                     setSuccessful(true);
+                    props.history.goBack()
                 },
                 (error) => {
                     const resMessage =
@@ -110,7 +113,7 @@ const CreateProject = (props) => {
 
 
                             <div className="form-group">
-                                <button className="btn btn-primary btn-block">Create Project</button>
+                                <button className="btn btn-primary btn-block">Edit Project</button>
                             </div>
                         </div>
                     )}
@@ -132,4 +135,4 @@ const CreateProject = (props) => {
     );
 }
 
-export default CreateProject
+export default EditProject

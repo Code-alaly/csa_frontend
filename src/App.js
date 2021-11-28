@@ -14,13 +14,12 @@ import BoardUser from "./components/BoardUser";
 import Projects from "./components/project/Projects";
 import CreateProject from "./components/project/createProject"
 import ViewProject from "./components/project/viewProject";
+import EditProject from "./components/project/editProject";
 
 const App = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(() => {
-        // so this part is where we do the authorization.
-        //TODO: look at the flow chart showing the steps of authorization again. I don't actually understand at the moment.
         const user = AuthService.getCurrentUser();
 
         if (user) {
@@ -89,7 +88,8 @@ const App = () => {
                     <Route path="/user" component={BoardUser}/>
                     <Route path="/projects" component={Projects}/>
                     <Route path="/createProject" component={CreateProject}/>
-                    <Route path={"/viewProject"} component={ViewProject}></Route>
+                    <Route path={"/viewProject"} component={ViewProject}/>
+                    <Route path={"/editProject"} component={EditProject}/>
                 </Switch>
             </div>
         </div>
